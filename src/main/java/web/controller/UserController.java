@@ -24,7 +24,7 @@ public class UserController {
 
 
     @GetMapping("/newUser")
-    public String getEmptyUser(ModelMap modelMap) {
+    public String getCreationUserForm(ModelMap modelMap) {
         User user = new User();
         modelMap.addAttribute("user", user);
         return "new";
@@ -37,12 +37,12 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public String getUserById(ModelMap modelMap, @PathVariable("id") long id) {
+    public String getUpdateUserForm(ModelMap modelMap, @PathVariable("id") long id) {
         modelMap.addAttribute("user", userService.getUser(id));
         return "update";
     }
     @PatchMapping("/{id}")
-    public String saveModifiedUser(@ModelAttribute("user") User user, @PathVariable("id") long id){
+    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id){
         user.setId(id);
         userService.update(user);
     return "redirect:/";
