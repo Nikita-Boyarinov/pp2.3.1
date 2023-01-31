@@ -17,14 +17,14 @@ public class UserController {
     }
 
     @GetMapping(value = "/")
-    public String printAllUsers(ModelMap modelMap) {
+    public String getAllUsers(ModelMap modelMap) {
         modelMap.addAttribute("users", userService.getAll());
         return "users";
     }
 
 
     @GetMapping("/newUser")
-    public String createNewUser(ModelMap modelMap) {
+    public String getEmptyUser(ModelMap modelMap) {
         User user = new User();
         modelMap.addAttribute("user", user);
         return "new";
@@ -37,19 +37,19 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public String updateUser(ModelMap modelMap, @PathVariable("id") long id) {
+    public String getUserById(ModelMap modelMap, @PathVariable("id") long id) {
         modelMap.addAttribute("user", userService.getUser(id));
         return "update";
     }
     @PatchMapping("/{id}")
-    public String saveUpdateUser(@ModelAttribute("user") User user, @PathVariable("id") long id){
+    public String saveModifiedUser(@ModelAttribute("user") User user, @PathVariable("id") long id){
         user.setId(id);
         userService.update(user);
     return "redirect:/";
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable long id){
+    public String deleteUserById(@PathVariable long id){
         userService.delete(id);
         return "redirect:/";
     }
