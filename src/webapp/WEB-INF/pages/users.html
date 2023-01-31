@@ -17,7 +17,6 @@
         <td th:text="${user.lastName}"></td>
         <td th:text="${user.age}"></td>
         <td>
-<!--            <a th:href="@{/user/{id}(id=${user.getId()})}">Изменить</a>-->
             <input type="button" value="Изменить" th:onclick="'window.location.href=\'/pp2_3_1/user/' + ${user.getId()} + '\''">
             <form th:method="DELETE" th:action="@{/{id}(id=${user.getId})}">
                 <input type="submit" value="Удалить"/>

@@ -13,7 +13,6 @@ public interface UserService {
     List<User> getAll();
 
 
-    @Transactional
     void delete(long id);
 
     void update(User user);

@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class UserServiceIml implements UserService {
 
-
     private final UserDao userDao;
 
 
@@ -27,13 +26,13 @@ public class UserServiceIml implements UserService {
         userDao.add(user);
     }
 
-    @Transactional
+
     @Override
     public User getUser(long id) {
         return userDao.getUser(id);
     }
 
-    @Transactional
+
     @Override
     public List<User> getAll() {
         return userDao.getAll();
