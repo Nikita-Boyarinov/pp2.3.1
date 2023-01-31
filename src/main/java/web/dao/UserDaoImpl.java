@@ -21,10 +21,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUser(long id) {
-        User user = entityManager.find(User.class, id);
-        entityManager.detach(user);
-        return user;
-
+        return entityManager.find(User.class, id);
     }
 
     @Override
